@@ -6,7 +6,7 @@ import {getRefererInfo} from '../src/refererDetection.js';
 import adapter from '../libraries/analyticsAdapter/AnalyticsAdapter.js';
 
 const ADAPTER_CODE = 'uniquest';
-const BASE_URL = 'https://rcvp.stg.ust-ad.com/';
+const BASE_URL = 'https://rcvp.ust-ad.com/';
 const AUCTION_END_URI = 'pbaae';
 const AD_RENDERED_URI = 'pbaars';
 
