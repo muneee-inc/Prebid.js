@@ -72,13 +72,14 @@ let uniquestAdapter = Object.assign({}, baseAdapter, {
 
   track({eventType, args}) {
     const refererInfo = getRefererInfo();
-    args.page_url = refererInfo.page;
 
     switch (eventType) {
       case EVENTS.AD_RENDER_SUCCEEDED:
+        args.page_url = refererInfo.page;
         adRenderSucceededHandler(eventType, args);
         break;
       case EVENTS.AUCTION_END:
+        args.page_url = refererInfo.page;
         auctionEndHandler(eventType, args);
         break;
     }
