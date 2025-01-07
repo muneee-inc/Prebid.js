@@ -10,6 +10,8 @@ const BASE_URL = 'https://rcvp.ust-ad.com/';
 const AUCTION_END_URI = 'pbaae';
 const AD_RENDERED_URI = 'pbaars';
 
+let sid;
+
 function sendEvent(event, uri) {
   ajax(
     BASE_URL + uri,
@@ -18,10 +20,11 @@ function sendEvent(event, uri) {
   );
 }
 
-function adRenderSucceededHandler(eventType, args) {
+function adRenderSucceededHandler(eventType, args, page_url) {
   const event = {
     event_type: eventType,
-    url: args.page_url,
+    url: page_url,
+    slot_id: sid,
     bid: {
       auction_id: args.bid?.auctionId,
       creative_id: args.bid?.creativeId,
@@ -35,11 +38,12 @@ function adRenderSucceededHandler(eventType, args) {
   sendEvent(event, AD_RENDERED_URI);
 }
 
-function auctionEndHandler(eventType, args) {
+function auctionEndHandler(eventType, args, page_url) {
   if (args.bidsReceived.length > 0) {
     const event = {
       event_type: eventType,
-      url: args.page_url,
+      url: page_url,
+      slot_id: sid,
       bids: args.bidsReceived?.map(br => ({
         auction_id: br?.auctionId,
         creative_id: br?.creativeId,
@@ -59,28 +63,28 @@ let uniquestAdapter = Object.assign({}, baseAdapter, {
 
   enableAnalytics(config = {}) {
     if (config.options && config.options.sid) {
+      sid = config.options.sid;
       baseAdapter.enableAnalytics.call(this, config);
     } else {
-      logError('Config not found');
-      logError('Analytics is disabled due to error(s)');
+      logError('Config not found. Analytics is disabled due.');
     }
   },
 
   disableAnalytics() {
+    sid = undefined;
     baseAdapter.disableAnalytics.apply(this, arguments);
   },
 
   track({eventType, args}) {
     const refererInfo = getRefererInfo();
+    let page_url = refererInfo.page;
 
     switch (eventType) {
       case EVENTS.AD_RENDER_SUCCEEDED:
-        args.page_url = refererInfo.page;
-        adRenderSucceededHandler(eventType, args);
+        adRenderSucceededHandler(eventType, args, page_url);
         break;
       case EVENTS.AUCTION_END:
-        args.page_url = refererInfo.page;
-        auctionEndHandler(eventType, args);
+        auctionEndHandler(eventType, args, page_url);
         break;
     }
   }
