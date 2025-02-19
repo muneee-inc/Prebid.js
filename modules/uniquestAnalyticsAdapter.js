@@ -32,6 +32,7 @@ function adRenderSucceededHandler(eventType, args, page_url) {
       media_type: args.bid?.mediaType,
       size: args.bid?.size,
       cpm: String(args.bid?.cpm),
+      hb_pb: String(args.bid?.adserverTargeting.hb_pb),
       ad_unit_code: args.bid?.adUnitCode
     }
   };
@@ -51,6 +52,7 @@ function auctionEndHandler(eventType, args, page_url) {
         media_type: br?.mediaType,
         size: br?.size,
         cpm: String(br?.cpm),
+        hb_pb: String(br?.adserverTargeting.hb_pb),
         ad_unit_code: br?.adUnitCode
       }))
     };
