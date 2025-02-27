@@ -2,9 +2,7 @@ import uniquestAnalyticsAdapter from 'modules/uniquestAnalyticsAdapter.js';
 import {config} from 'src/config';
 import {EVENTS} from 'src/constants.js';
 import {server} from '../../mocks/xhr.js';
-import {logError} from '../../../src/utils';
 
-let utils = require('src/utils');
 let events = require('src/events');
 
 const SAMPLE_EVENTS = {
@@ -32,7 +30,7 @@ const SAMPLE_EVENTS = {
               ],
               [
                 300,
-                300
+                250
               ]
             ]
           }
@@ -57,12 +55,16 @@ const SAMPLE_EVENTS = {
         ],
         'sizes': [
           [
-            300,
-            250
+            1,
+            1
           ],
           [
             300,
-            600
+            300
+          ],
+          [
+            300,
+            250
           ]
         ],
         'transactionId': '12345678'
@@ -106,11 +108,11 @@ const SAMPLE_EVENTS = {
               ],
               [
                 300,
-                250
+                300
               ],
               [
                 300,
-                300
+                250
               ]
             ],
             'bidId': '206be9a13236af',
@@ -157,12 +159,16 @@ const SAMPLE_EVENTS = {
               'banner': {
                 'sizes': [
                   [
-                    300,
-                    250
+                    1,
+                    1
                   ],
                   [
                     300,
                     300
+                  ],
+                  [
+                    300,
+                    250
                   ]
                 ]
               }
@@ -171,12 +177,16 @@ const SAMPLE_EVENTS = {
             'transactionId': '6b29369c',
             'sizes': [
               [
-                300,
-                250
+                1,
+                1
               ],
               [
                 300,
                 300
+              ],
+              [
+                300,
+                250
               ]
             ],
             'bidId': '41badc0e164c758',
@@ -220,12 +230,16 @@ const SAMPLE_EVENTS = {
           'banner': {
             'sizes': [
               [
-                300,
-                250
+                1,
+                1
               ],
               [
                 300,
-                600
+                300
+              ],
+              [
+                300,
+                250
               ]
             ]
           }
@@ -234,12 +248,16 @@ const SAMPLE_EVENTS = {
         'transactionId': '6b29369c',
         'sizes': [
           [
-            300,
-            250
+            1,
+            1
           ],
           [
             300,
-            600
+            300
+          ],
+          [
+            300,
+            250
           ]
         ],
         'bidId': '41badc0e164c758',
@@ -261,7 +279,7 @@ const SAMPLE_EVENTS = {
         'requestId': '4d9eec3fe27a43',
         'mediaType': 'banner',
         'source': 'client',
-        'cpm': 2.7333333333333335,
+        'cpm': 2.73,
         'currency': 'JPY',
         'ad': '<script async src="https://ad.stg.ust-ad.com/scripts/pbad.js?sid=3pwnAHWX" id="uniquest"></script> <div class="uniquest-slot-pb" data-id="3pwnAHWX" bid-id="7806bcbb-a156-4ec4-872b-bd0d8e8bff34" style="display:none"></div>',
         'ttl': 300,
@@ -272,7 +290,7 @@ const SAMPLE_EVENTS = {
             'test-pb.ust-ad.com'
           ]
         },
-        'originalCpm': 2.7333333333333335,
+        'originalCpm': 2.73,
         'originalCurrency': 'JPY',
         'auctionId': '75e394d9',
         'responseTimestamp': 1733709113100,
@@ -291,7 +309,7 @@ const SAMPLE_EVENTS = {
           'hb_bidder': 'uniquest',
           'hb_adid': '53c5a9c1947c57',
           'hb_pb': '2.70',
-          'hb_size': '480x320',
+          'hb_size': '300x300',
           'hb_source': 'client',
           'hb_format': 'banner',
           'hb_adomain': 'test-pb.ust-ad.com'
@@ -322,41 +340,41 @@ const SAMPLE_EVENTS = {
       'width': 300,
       'height': 300,
       'statusMessage': 'Bid available',
-      'adId': '5759bb3ef7be1e8',
-      'requestId': '206be9a13236af',
+      'adId': '53c5a9c1947c57',
+      'requestId': '4d9eec3fe27a43',
       'mediaType': 'banner',
       'source': 'client',
-      'cpm': '2.258302852806723',
+      'cpm': '2.73',
       'currency': 'JPY',
       'ad': 'test_ad',
       'metrics': {
         'someMetric': 0
       },
-      'ttl': 200,
-      'creativeId': '456456456',
+      'ttl': 300,
+      'creativeId': '7806bcbb-a156-4ec4-872b-bd0d8e8bff34',
       'netRevenue': true,
       'meta': {
         'advertiserDomains': [
-          'example.adomain'
+          'test-pb.ust-ad.com'
         ]
       },
-      'originalCpm': 2.258302852806723,
+      'originalCpm': 2.73,
       'originalCurrency': 'JPY',
       'auctionId': '75e394d9',
       'responseTimestamp': 1733709113100,
       'requestTimestamp': 1733709113010,
       'bidder': 'uniquest',
       'adUnitCode': '12345678910/uniquest_1',
-      'timeToRespond': 123,
-      'size': '480x320',
+      'timeToRespond': 100,
+      'size': '300x300',
       'adserverTargeting': {
         'hb_bidder': 'uniquest',
-        'hb_adid': '5759bb3ef7be1e8',
-        'hb_pb': '2.20',
-        'hb_size': '480x320',
+        'hb_adid': '53c5a9c1947c57',
+        'hb_pb': '2.70',
+        'hb_size': '300x300',
         'hb_source': 'client',
         'hb_format': 'banner',
-        'hb_adomain': 'example.adomain'
+        'hb_adomain': 'test-pb.ust-ad.com'
       },
       'status': 'rendered',
       'params': [
@@ -364,8 +382,7 @@ const SAMPLE_EVENTS = {
           'nonZetaParam': 'nonZetaValue'
         }
       ]
-    },
-    'adId': '5759bb3ef7be1e8'
+    }
   }
 }
 
@@ -417,7 +434,8 @@ describe('Uniquest Analytics Adapter', function () {
         bidder: 'uniquest',
         media_type: 'banner',
         size: '300x250',
-        cpm: '2.7333333333333334',
+        cpm: '2.73',
+        hb_pb: '2.70',
         ad_unit_code: '/12345678910/uniquest_1',
       }]
       );
@@ -430,11 +448,12 @@ describe('Uniquest Analytics Adapter', function () {
       // bid
       expect(auctionSucceeded.bid).to.be.deep.equal({
         auction_id: '75e394d9',
-        creative_id: '456456456',
+        creative_id: '7806bcbb-a156-4ec4-872b-bd0d8e8bff34',
         bidder: 'uniquest',
         media_type: 'banner',
-        size: '480x320',
-        cpm: '2.258302852806723',
+        size: '300x300',
+        cpm: '2.73',
+        hb_pb: '2.70',
         ad_unit_code: '12345678910/uniquest_1'
       });
     });

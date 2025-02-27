@@ -20,10 +20,10 @@ function sendEvent(event, uri) {
   );
 }
 
-function adRenderSucceededHandler(eventType, args, page_url) {
+function adRenderSucceededHandler(eventType, args, pageUrl) {
   const event = {
     event_type: eventType,
-    url: page_url,
+    url: pageUrl,
     slot_id: sid,
     bid: {
       auction_id: args.bid?.auctionId,
@@ -39,11 +39,11 @@ function adRenderSucceededHandler(eventType, args, page_url) {
   sendEvent(event, AD_RENDERED_URI);
 }
 
-function auctionEndHandler(eventType, args, page_url) {
+function auctionEndHandler(eventType, args, pageUrl) {
   if (args.bidsReceived.length > 0) {
     const event = {
       event_type: eventType,
-      url: page_url,
+      url: pageUrl,
       slot_id: sid,
       bids: args.bidsReceived?.map(br => ({
         auction_id: br?.auctionId,
@@ -79,14 +79,14 @@ let uniquestAdapter = Object.assign({}, baseAdapter, {
 
   track({eventType, args}) {
     const refererInfo = getRefererInfo();
-    let page_url = refererInfo.page;
+    let pageUrl = refererInfo.page;
 
     switch (eventType) {
       case EVENTS.AD_RENDER_SUCCEEDED:
-        adRenderSucceededHandler(eventType, args, page_url);
+        adRenderSucceededHandler(eventType, args, pageUrl);
         break;
       case EVENTS.AUCTION_END:
-        auctionEndHandler(eventType, args, page_url);
+        auctionEndHandler(eventType, args, pageUrl);
         break;
     }
   }
