@@ -39,11 +39,7 @@ const SAMPLE_EVENTS = {
           {
             'bidder': 'uniquest',
             'params': {
-              'sid': '3pwnAHWX',
-              'tags': {
-                'shortname': 'prebid_analytics_event_test_shortname',
-                'position': 'test_position'
-              }
+              'sid': '3pwnAHWX'
             }
           },
           {
@@ -75,12 +71,20 @@ const SAMPLE_EVENTS = {
     ],
     'bidderRequests': [
       {
-        'bidderCode': 'uniquest',
         'auctionId': '75e394d9',
+        'auctionStart': 1733709113010,
+        'bidderCode': 'uniquest',
         'bidderRequestId': '1207cb49191887',
         'bids': [
           {
+            'adUnitCode': '/12345678910/uniquest_1',
+            'auctionId': '75e394d9',
+            'bidId': '206be9a13236af',
+            'bidderRequestId': '1207cb49191887',
             'bidder': 'uniquest',
+            'bidRequestsCount': 1,
+            'bidderRequestsCount': 1,
+            'bidderWinsCount': 0,
             'mediaTypes': {
               'banner': {
                 'sizes': [
@@ -99,7 +103,7 @@ const SAMPLE_EVENTS = {
                 ]
               }
             },
-            'adUnitCode': '/12345678910/uniquest_1',
+
             'transactionId': '6b29369c',
             'sizes': [
               [
@@ -115,21 +119,9 @@ const SAMPLE_EVENTS = {
                 250
               ]
             ],
-            'bidId': '206be9a13236af',
-            'bidderRequestId': '1207cb49191887',
-            'auctionId': '75e394d9',
             'src': 'client',
-            'bidRequestsCount': 1,
-            'bidderRequestsCount': 1,
-            'bidderWinsCount': 0,
-            'ortb2': {
-              'device': {
-                'mobile': 1
-              }
-            }
           }
         ],
-        'auctionStart': 1733709113010,
         'timeout': 400,
         'refererInfo': {
           'page': 'http://test-pb.ust-ad.com/banner.html',
