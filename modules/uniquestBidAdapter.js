@@ -3,6 +3,12 @@ import {registerBidder} from '../src/adapters/bidderFactory.js';
 import {BANNER} from '../src/mediaTypes.js';
 import {tryAppendQueryString} from '../libraries/urlUtils/urlUtils.js';
 
+/**
+ * @typedef {import('../src/adapters/bidderFactory').Bid} Bid
+ * @typedef {import('../src/adapters/bidderFactory').BidRequest} BidRequest
+ * @typedef {import('../src/auction').BidderRequest} BidderRequest
+ */
+
 const BIDDER_CODE = 'uniquest';
 const ENDPOINT = 'https://adpb.ust-ad.com/hb/prebid';
 
