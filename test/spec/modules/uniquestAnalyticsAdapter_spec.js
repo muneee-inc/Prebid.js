@@ -286,7 +286,7 @@ const SAMPLE_EVENTS = {
         'originalCurrency': 'JPY',
         'auctionId': '75e394d9',
         'responseTimestamp': 1733709113100,
-        'requestTimestamp': 1733709113010,
+        'requestTimestamp': 1733709113000,
         'bidder': 'uniquest',
         'adUnitCode': '/12345678910/uniquest_1',
         'timeToRespond': 100,
@@ -354,7 +354,7 @@ const SAMPLE_EVENTS = {
       'originalCurrency': 'JPY',
       'auctionId': '75e394d9',
       'responseTimestamp': 1733709113100,
-      'requestTimestamp': 1733709113010,
+      'requestTimestamp': 1733709113000,
       'bidder': 'uniquest',
       'adUnitCode': '12345678910/uniquest_1',
       'timeToRespond': 100,
@@ -427,7 +427,11 @@ describe('Uniquest Analytics Adapter', function () {
         media_type: 'banner',
         size: '300x250',
         cpm: '2.73',
+        currency: 'JPY',
+        original_cpm: '2.73',
+        original_currency: 'JPY',
         hb_pb: '2.70',
+        bidding_time: '100',
         ad_unit_code: '/12345678910/uniquest_1',
       }]
       );
@@ -445,7 +449,11 @@ describe('Uniquest Analytics Adapter', function () {
         media_type: 'banner',
         size: '300x300',
         cpm: '2.73',
+        currency: 'JPY',
+        original_cpm: '2.73',
+        original_currency: 'JPY',
         hb_pb: '2.70',
+        bidding_time: '100',
         ad_unit_code: '12345678910/uniquest_1'
       });
     });

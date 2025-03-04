@@ -32,7 +32,11 @@ function adRenderSucceededHandler(eventType, args, pageUrl) {
       media_type: args.bid?.mediaType,
       size: args.bid?.size,
       cpm: String(args.bid?.cpm),
+      currency: String(args.bid?.currency),
+      original_cpm: String(args.bid?.originalCpm),
+      original_currency: String(args.bid?.originalCurrency),
       hb_pb: String(args.bid?.adserverTargeting.hb_pb),
+      bidding_time: String(args.bid?.timeToRespond),
       ad_unit_code: args.bid?.adUnitCode
     }
   };
@@ -52,7 +56,11 @@ function auctionEndHandler(eventType, args, pageUrl) {
         media_type: br?.mediaType,
         size: br?.size,
         cpm: String(br?.cpm),
+        currency: String(br?.currency),
+        original_cpm: String(br?.originalCpm),
+        original_currency: String(br?.originalCurrency),
         hb_pb: String(br?.adserverTargeting.hb_pb),
+        bidding_time: String(br?.timeToRespond),
         ad_unit_code: br?.adUnitCode
       }))
     };
