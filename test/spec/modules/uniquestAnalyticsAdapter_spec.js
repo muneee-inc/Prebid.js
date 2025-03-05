@@ -431,7 +431,7 @@ describe('Uniquest Analytics Adapter', function () {
         original_cpm: '2.73',
         original_currency: 'JPY',
         hb_pb: '2.70',
-        bidding_time: '100',
+        bidding_time: 100,
         ad_unit_code: '/12345678910/uniquest_1',
       }]
       );
@@ -453,7 +453,7 @@ describe('Uniquest Analytics Adapter', function () {
         original_cpm: '2.73',
         original_currency: 'JPY',
         hb_pb: '2.70',
-        bidding_time: '100',
+        bidding_time: 100,
         ad_unit_code: '12345678910/uniquest_1'
       });
     });
