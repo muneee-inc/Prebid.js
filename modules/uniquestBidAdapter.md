@@ -28,6 +28,7 @@ var adUnits = [
       bidder: 'uniquest',
       params: {
         sid: 'ONhFoaQn', // device is smartphone only
+        widget_flag: true // Specify true only when delivering widgets
       }
     }]
   }

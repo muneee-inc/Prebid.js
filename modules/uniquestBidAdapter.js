@@ -42,6 +42,7 @@ export const spec = {
 
       const bid = request.bidId;
       const sid = getBidIdParameter('sid', request.params);
+      const widgetFlag = getBidIdParameter('widget_flag', request.params);
       const widths = request.sizes.map(size => size[0]).join(',');
       const heights = request.sizes.map(size => size[1]).join(',');
       const timeout = bidderRequest.timeout
@@ -51,6 +52,7 @@ export const spec = {
       queryString = tryAppendQueryString(queryString, 'widths', widths);
       queryString = tryAppendQueryString(queryString, 'heights', heights);
       queryString = tryAppendQueryString(queryString, 'timeout', timeout);
+      queryString = tryAppendQueryString(queryString, 'widget_flag', widgetFlag);
 
       bidRequests.push({
         method: 'GET',
